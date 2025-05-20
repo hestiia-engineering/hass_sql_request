@@ -1,12 +1,13 @@
 {
     "domain": "sql_request",
     "name": "SQL Request",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "after_dependencies": ["recorder"],
     "requirements": [
         "sqlalchemy~=2.0"
     ],
-    "dependencies": [],
+    "single_config_entry": true,
+    "dependencies": ["sensor"],
     "codeowners": ["@hestiia-engineering"],
     "iot_class": "local_polling",
     "documentation": "https://github.com/hestiia-engineering/sql_request/blob/master/README.md",
