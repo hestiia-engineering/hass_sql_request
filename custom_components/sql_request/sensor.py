@@ -4,7 +4,7 @@ import json
 from homeassistant.helpers.entity import Entity
 from datetime import timedelta
 
-from .__init__ import _LOGGER
+from ... import _LOGGER
 
 SCAN_INTERVAL = timedelta(minutes=5)
 
