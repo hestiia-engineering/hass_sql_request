@@ -73,7 +73,7 @@ class SqlExistSensor(Entity):
         """Check if a record exists in the database and return it as JSON if exist or unknown otherwise."""
     
         query = f"SELECT {self._columns} FROM {self._table}"
-        if where:
+        if self._where:
             query += f" WHERE {self._where}"
         try:
             conn = sqlite3.connect(self._db)
