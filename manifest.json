@@ -10,5 +10,6 @@
     "codeowners": ["@hestiia-engineering"],
     "iot_class": "local_polling",
     "issue_tracker": "https://github.com/hestiia-engineering/sql_request/issues",
+    "documentation": "https://hestiia-engineering.github.io/sql_request/",
     "version": "0.1.0"
 }
