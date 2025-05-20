@@ -1,7 +1,6 @@
 {
     "domain": "sql_request",
     "name": "SQL Request",
-    "version": "1.0.0",
     "after_dependencies": ["recorder"],
     "requirements": [
         "sqlalchemy~=2.0"
@@ -11,6 +10,5 @@
     "codeowners": ["@hestiia-engineering"],
     "iot_class": "local_polling",
     "issue_tracker": "https://github.com/hestiia-engineering/sql_request/issues",
-    "single_config_entry": true,
     "version": "0.1.0"
 }
