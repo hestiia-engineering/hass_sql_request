@@ -1,0 +1,64 @@
+{
+  "services": {
+    "sql_insert": {
+      "name": "Insert row",
+      "description": "Insert a row into a table.",
+      "fields": {
+        "table": {
+          "name": "Table",
+          "description": "The table to insert into."
+        },
+        "values": {
+          "name": "Values",
+          "description": "The values to insert."
+        }
+      }
+    },
+    "sql_update": {
+      "name": "Update row(s)",
+      "description": "Update row(s) in a table.",
+      "fields": {
+        "table": {
+          "name": "Table",
+          "description": "The table to update."
+        },
+        "set_values": {
+          "name": "Set values",
+          "description": "The values to set."
+        },
+        "where": {
+          "name": "Where",
+          "description": "The WHERE clause to select rows."
+        }
+      }
+    },
+    "sql_delete": {
+      "name": "Delete row(s)",
+      "description": "Delete row(s) from a table.",
+      "fields": {
+        "table": {
+          "name": "Table",
+          "description": "The table to delete from."
+        },
+        "where": {
+          "name": "Where",
+          "description": "The WHERE clause to select rows."
+        }
+      }
+    },
+    "sql_insert_or_replace": {
+      "name": "Insert or Replace row",
+      "description": "Insert or replace a row in a table.",
+      "fields": {
+        "table": {
+          "name": "Table",
+          "description": "The table to insert or replace into."
+        },
+        "values": {
+          "name": "Values",
+          "description": "The values to insert or replace."
+        }
+      }
+    }
+  }
+}
