@@ -2,8 +2,6 @@ name: Validate
 
 on:
   push:
-    branches-ignore: ['*']
-    tags: ['*']
   pull_request:
   workflow_dispatch:
 
@@ -18,3 +16,7 @@ jobs:
         uses: "hacs/action@main"
         with:
           category: "integration"
+
+
+
+      
