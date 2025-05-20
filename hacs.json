@@ -1,7 +1,4 @@
 {
   "name": "SQL Request",
   "content_in_root": true,
-  "domains": ["sql_request"],
-  "country": "FR",
-  "homeassistant": "2023.0.0"
 }
