@@ -1,0 +1,45 @@
+sql_insert:
+  description: "Inserts data into the SQLite database"
+  fields:
+    table:
+      description: "Name of the table"
+      example: "operating_power"
+    values:
+      description: "Values to insert"
+      example: "{'power_target': 100, 'setpoint_temperature': 22}"
+
+sql_update:
+  description: "Updates data in the SQLite database"
+  fields:
+    table:
+      description: "Name of the table"
+      example: "operating_power"
+    set_values:
+      description: "Values to update"
+      example: "{'setpoint_temperature': 24}"
+    where:
+      description: "WHERE condition"
+      example: "power_target = 100"
+
+sql_delete:
+  description: "Deletes data from the SQLite database"
+  fields:
+    table:
+      description: "Name of the table"
+      example: "operating_power"
+    where:
+      description: "WHERE condition"
+      example: "power_target = 100"
+
+sql_insert_or_replace:
+  description: "Inserts or replaces data in the SQLite database"
+  fields:
+    table:
+      description: "Name of the table"
+      example: "operating_power"
+    values:
+      description: "Values to insert or replace"
+      example: "{'power_target': 100, 'setpoint_temperature': 22}"
+
+
+

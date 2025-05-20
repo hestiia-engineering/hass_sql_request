@@ -1,0 +1,17 @@
+{
+    "domain": "sql_request",
+    "name": "SQL Request",
+    "version": "0.1.0",
+    "after_dependencies": ["recorder"],
+    "requirements": [
+        "sqlalchemy~=2.0",
+        "homeassistant",
+        "typing-extensions",
+        "pysqlite3-binary"
+    ],
+    "dependencies": [],
+    "codeowners": ["@killian"],
+    "iot_class": "local_polling",
+    "documentation": "https://github.com/killian/sql_request",
+    "issue_tracker": "https://github.com/killian/sql_request/issues"
+}
