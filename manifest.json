@@ -6,8 +6,7 @@
     "requirements": [
         "sqlalchemy~=2.0",
         "homeassistant",
-        "typing-extensions",
-        "pysqlite3-binary"
+        "typing-extensions"
     ],
     "dependencies": [],
     "codeowners": ["@killian"],
