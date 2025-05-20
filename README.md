@@ -28,34 +28,72 @@ sql_request:
 
 ## Services
 
-### `sql_request.insert`
+### `insert`
 
 Insert data into a table.
+
+**YAML Example:**
+```yaml
+service: sql_request.insert
+data:
+  table: operating_power
+  values:
+    power_target: 100
+    setpoint_temperature: 22
+```
 
 **Fields:**
 - `table` (string): Name of the table.
 - `values` (dict): Values to insert. Example: `{'power_target': 100, 'setpoint_temperature': 22}`
 
-### `sql_request.update`
+### `update`
 
 Update data in a table.
+
+**YAML Example:**
+```yaml
+service: sql_request.update
+data:
+  table: operating_power
+  values:
+    setpoint_temperature: 24
+  where: power_target = 100
+```
 
 **Fields:**
 - `table` (string): Name of the table.
 - `values` (dict): Values to update. Example: `{'setpoint_temperature': 24}`
 - `where` (string): WHERE condition. Example: `power_target = 100`
 
-### `sql_request.delete`
+### `delete`
 
 Delete data from a table.
+
+**YAML Example:**
+```yaml
+service: sql_request.delete
+data:
+  table: operating_power
+  where: power_target = 100
+```
 
 **Fields:**
 - `table` (string): Name of the table.
 - `where` (string): WHERE condition. Example: `power_target = 100`
 
-### `sql_request.insert_or_replace`
+### `insert_or_replace`
 
 Insert or replace data in a table.
+
+**YAML Example:**
+```yaml
+service: sql_request.insert_or_replace
+data:
+  table: operating_power
+  values:
+    power_target: 100
+    setpoint_temperature: 22
+```
 
 **Fields:**
 - `table` (string): Name of the table.
@@ -63,7 +101,7 @@ Insert or replace data in a table.
 
 ## Sensor Platform
 
-You can create a sensor to check for the existence of a record:
+You can create a sensor to check for the existence of a record by adding the following to your `configuration.yaml`:
 
 ```yaml
 sensor:
@@ -78,9 +116,18 @@ sensor:
 
 The sensor state will be a JSON string of the first matching row, or `"unknown"` if no match.
 
-## Service: `sql_request.update_sql_request_sensor`
+### Service: `update_sql_request_sensor`
 
-Update the SQL request sensor with new query parameters.
+Update the sensor with new query parameters.
+
+**YAML Example:**
+```yaml
+service: sql_request.update_sql_request_sensor
+data:
+  table: operating_power
+  columns: power_target, setpoint_temperature
+  where: power_target = 100
+```
 
 **Fields:**
 - `table` (string, optional)
@@ -91,3 +138,9 @@ Update the SQL request sensor with new query parameters.
 
 - Use with caution: direct SQL access can modify your Home Assistant database.
 - Always back up your database before using write operations.
+- **It is recommended to alter only a different database than the main Home Assistant database, or at least to create and use a new table for your custom data. Modifying existing Home Assistant tables may cause data corruption or unexpected behavior.**
+
+---
+
+**Disclaimer:**  
+This custom component is provided as-is. If you encounter any problems or data loss, the author is not responsible. Use at your own risk.
