@@ -2,11 +2,10 @@ import sqlite3
 import logging
 import json
 from homeassistant.helpers.entity import Entity
-from datetime import timedelta
+from homeassistant.components.recorder import CONF_DB_URL, DEFAULT_DB_FILE, DEFAULT_URL
 
-from ... import _LOGGER
+_LOGGER = logging.getLogger(__name__)
 
-SCAN_INTERVAL = timedelta(minutes=5)
 
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
@@ -14,18 +13,11 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     columns = config.get("columns", "*")
     where = config.get("where")
     name = config.get("name", f"SQL Exist {table}")
-    db_path = config.get("db", hass.config.path("home-assistant_v2.db")) 
+    if not (db_url := config.get(CONF_DB_URL)):
+        db_url = DEFAULT_URL.format(hass_config_path=hass.config.path(DEFAULT_DB_FILE))
+ 
 
-    scan_interval = config.get("scan_interval")
-    global SCAN_INTERVAL
-    if scan_interval is not None:
-        # scan_interval can be seconds or a dict {'seconds': 30}
-        if isinstance(scan_interval, dict):
-            SCAN_INTERVAL = timedelta(**scan_interval)
-        else:
-            SCAN_INTERVAL = timedelta(seconds=int(scan_interval))
-
-    sensor = SqlExistSensor(name, table, columns, where, db_path)
+    sensor = SqlExistSensor(name, table, columns, where, db_url)
     add_entities([sensor])
 
     # Register the service to update the sensor

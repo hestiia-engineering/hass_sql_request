@@ -2,6 +2,7 @@
 import sqlite3
 import logging
 from homeassistant.core import HomeAssistant, ServiceCall
+from homeassistant.components.recorder import CONF_DB_URL, DEFAULT_DB_FILE, DEFAULT_URL
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -11,7 +12,9 @@ def setup(hass, config):
     """Function call by Home Assistant to set up the component."""
 
     global DB_PATH 
-    DB_PATH = config["sql_request"].get("db", hass.config.path("home-assistant_v2.db"))
+    if not (DB_PATH := config.get(CONF_DB_URL)):
+        DB_PATH = DEFAULT_URL.format(hass_config_path=hass.config.path(DEFAULT_DB_FILE))
+ 
    
     register_services(hass)
     return True
