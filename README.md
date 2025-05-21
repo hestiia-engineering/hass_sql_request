@@ -27,10 +27,28 @@ Add the following to your `configuration.yaml`:
 
 ```yaml
 sql_request:
-  db_url: /config/home-assistant_v2.db  # Optional: path to your SQLite database
+  db: /config/home-assistant_v2.db  # Optional: path to your SQLite database
 ```
 
 ## Services
+
+### `set_db_path`
+
+Dynamically update the database path used by the integration **for services only** (insert, update, delete, insert_or_replace) without restarting Home Assistant.
+
+> **Note:**  
+> This service does **not** affect the database used by the sensor platform.  
+> To change the database for a sensor, you must update the `db_url` in your sensor configuration and restart Home Assistant.
+
+**YAML Example:**
+```yaml
+service: sql_request.set_db_path
+data:
+  db_path: /config/another_database.db
+```
+
+**Fields:**
+- `db_path` (string): The new path to your SQLite database.
 
 ### `insert`
 
