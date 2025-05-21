@@ -13,10 +13,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     columns = config.get("columns", "*")
     where = config.get("where")
     name = config.get("name", f"SQL Exist {table}")
-    if not (db_url := config.get(CONF_DB_URL)):
-        db_url = DEFAULT_URL.format(hass_config_path=hass.config.path(DEFAULT_DB_FILE))
+    db_url = config.get(CONF_DB_URL, hass.config.path(DEFAULT_DB_FILE))
  
-
+    _LOGGER.info(f"Using database path for sensor: {db_url}")
     sensor = SqlExistSensor(name, table, columns, where, db_url)
     add_entities([sensor])
 

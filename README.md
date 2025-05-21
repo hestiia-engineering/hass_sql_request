@@ -27,7 +27,7 @@ Add the following to your `configuration.yaml`:
 
 ```yaml
 sql_request:
-  db: /config/home-assistant_v2.db  # Optional: path to your SQLite database
+  db_url: /config/home-assistant_v2.db  # Optional: path to your SQLite database
 ```
 
 ## Services
@@ -114,7 +114,7 @@ sensor:
     table: "operating_power"
     columns: "power_target, setpoint_temperature"
     where: "power_target = 100"
-    db: "/config/home-assistant_v2.db"  # Optional
+    db_url: "/config/home-assistant_v2.db"  # Optional
     scan_interval: 60  # Optional, in seconds
 ```
 

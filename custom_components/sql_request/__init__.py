@@ -1,4 +1,3 @@
-
 import sqlite3
 import logging
 from homeassistant.core import HomeAssistant, ServiceCall
@@ -12,8 +11,8 @@ def setup(hass, config):
     """Function call by Home Assistant to set up the component."""
 
     global DB_PATH 
-    if not (DB_PATH := config.get(CONF_DB_URL)):
-        DB_PATH = DEFAULT_URL.format(hass_config_path=hass.config.path(DEFAULT_DB_FILE))
+    DB_PATH = config.get("db_url", hass.config.path(DEFAULT_DB_FILE))
+     
  
    
     register_services(hass)
@@ -37,6 +36,16 @@ def register_services(hass: HomeAssistant):
     """Registers all intégration services."""
 
     _LOGGER.info("Registering SQL Request services...")
+
+    def set_db_path(call: ServiceCall):
+        """Change the database path dynamically."""
+        global DB_PATH
+        new_path = call.data.get("db_path")
+        if new_path:
+            DB_PATH = new_path
+            _LOGGER.info(f"Database path changed to: {DB_PATH}")
+        else:
+            _LOGGER.error("No db_path provided to set_db_path service.")
 
     def sql_insert(call: ServiceCall):
         """Executes a SQL INSERT statement."""
@@ -97,5 +106,6 @@ def register_services(hass: HomeAssistant):
     hass.services.register("sql_request", "update", sql_update)
     hass.services.register("sql_request", "delete", sql_delete)
     hass.services.register("sql_request", "insert_or_replace", sql_insert_or_replace)
+    hass.services.register("sql_request", "set_db_path", set_db_path)
     _LOGGER.info("SQL Request services registered successfully!")
-    _LOGGER.info(f"Using database path: {DB_PATH}")
+    _LOGGER.info(f"Using database path for services: {DB_PATH}")
