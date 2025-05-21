@@ -4,18 +4,22 @@ This Home Assistant custom component allows you to perform SQL operations (INSER
 
 ## Installation
 
-### Manual
+### Manual Installation
 
-1. Copy the `sql_request` folder to your `custom_components` directory.
-2. Restart Home Assistant.
+1. Download the latest release file: `sql_request.zip` from the [releases page](https://github.com/hestiia-engineering/sql_request/releases).
+2. Unzip the contents into your `custom_components` directory in your Home Assistant configuration folder.
+   - The resulting path should be: `custom_components/sql_request/`
+3. Restart Home Assistant.
 
-### With HACS
+### HACS Installation
 
-1. In HACS, go to **Integrations**.
-2. Click the three dots menu (upper right) and select **Custom repositories**.
-3. Add your repository URL and select **Integration** as the category.
-4. Search for `sql_request` in HACS and install.
-5. Restart Home Assistant.
+1. In HACS, go to "Integrations" and click the three dots in the top right, then "Custom repositories".
+2. Add this repository URL: `https://github.com/hestiia-engineering/sql_request` and select "Integration" as the category.
+3. Install the integration from the HACS UI.
+4. Restart Home Assistant.
+
+> **Note:**  
+> If you do not add this repository as a custom repository in HACS, the integration will not be available for installation via HACS.
 
 ## Configuration
 
