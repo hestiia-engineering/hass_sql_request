@@ -1,5 +1,8 @@
 {
   "name": "SQL Request",
-  "content_in_root": false
+  "content_in_root": false,
+  "render_readme": true,
+  "zip_release": true,
+  "filename": "ingress.zip"
 }
 
