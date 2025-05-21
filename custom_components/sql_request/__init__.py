@@ -11,7 +11,7 @@ def setup(hass, config):
     """Function call by Home Assistant to set up the component."""
 
     global DB_PATH 
-    DB_PATH = config.get("db_url", hass.config.path(DEFAULT_DB_FILE))
+    DB_PATH = config.get(CONF_DB_URL, hass.config.path(DEFAULT_DB_FILE))
      
  
    
